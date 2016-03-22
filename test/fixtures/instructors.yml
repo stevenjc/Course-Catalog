@@ -1,0 +1,16 @@
+# Read about fixtures at
+# http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  email: MyString
+  first: MyString
+  middle: MyString
+  last: MyString
+  comment: MyText
+
+two:
+  email: MyString
+  first: MyString
+  middle: MyString
+  last: MyString
+  comment: MyText
