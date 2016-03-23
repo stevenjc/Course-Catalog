@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+
   get 'landing/show'
 
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
@@ -19,7 +21,7 @@ Rails.application.routes.draw do
   get "/instructors" => "instructors#index"
   get "/subjects" => "subjects#index"
   get "/courses" => "courses#index"
-
+  get "/search" => "search#index"
   get "/account" => "account#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
