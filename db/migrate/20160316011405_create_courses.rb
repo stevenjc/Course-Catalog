@@ -9,6 +9,9 @@ class CreateCourses < ActiveRecord::Migration
       t.text :description
       t.float :credits
       t.boolean :independent_study
+      t.string :subjects
+      t.string :course_id
+      t.string :requirements
 
       t.timestamps null: false
     end

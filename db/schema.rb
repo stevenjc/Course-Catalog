@@ -22,6 +22,9 @@ ActiveRecord::Schema.define(version: 20160316011405) do
     t.text     "description"
     t.float    "credits"
     t.boolean  "independent_study"
+    t.string   "subjects"
+    t.string   "course_id"
+    t.string   "requirements"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end

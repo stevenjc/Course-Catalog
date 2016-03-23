@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   root 'landing#show'
 
   get "/instructors" => "instructors#index"
+  get "/subjects" => "subjects#index"
+  get "/courses" => "courses#index"
 
   get "/account" => "account#index"
 

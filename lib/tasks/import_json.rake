@@ -1,7 +1,7 @@
 require 'json'
 
 
-task :import_instructor  => :environment do
+task :import_instructors  => :environment do
   File.open('instructor.json', 'r') do |file|
     file.each do |line|
       instructor_attrs = ActiveSupport::JSON.decode(line)
@@ -11,26 +11,21 @@ task :import_instructor  => :environment do
   end
 end
 
-task :import_subject  => :environment do
-    file = File.read('subject.json')
-    subject_attrs = JSON.parse(file)
-    puts subject_attrs
-    subject = Subject.new
-    subject.subject_id = subject_attrs.delete("id")
-    subject.comment = subject_attrs.delete("comment")
-    subject.term = subject_attrs.delete("term")
-    subject.name = subject_attrs.delete("name")
-    subject.abbreviation = subject_attrs.delete("abbreviation")
-    subject.save
+task :import_subjects  => :environment do
+
+    JSON.parse(open("subject.json").read).each do |line|
+        subject = Subject.new(line)
+        subject.id = nil    #nullify id slot set by json
+        subject.subject_id = line['id']
+        subject.save!
+    end
 end
 
-task :import_course => :environment do
-  File.open('course.json', 'r') do |file|
-    file.each do |line|
-      course_attrs = JSON.parse line
-
-      course = Course.create! course_attrs
-
+task :import_courses => :environment do
+    JSON.parse(open("course.json").read).each do |line|
+        course = Course.new(line)
+        course.id = nil    #nullify id slot set by json
+        course.course_id = line['id']
+        course.save!
     end
-  end
 end
