@@ -1,6 +1,6 @@
 <h1>Listing Subjects</h1>
 
-<table class="table table-responsive" style="border-spacing: 15px;">
+<table class="table table-bordered">
     <tr>
       <th>ID</th>
       <th>Name</th>
@@ -8,7 +8,7 @@
       <th>Term</th>
     </tr>
     <% @subjects.each do |subject| %>
-      <tr style="text-align: center">
+      <tr>
           <td><%=subject.subject_id%></td>
           <td><%=subject.name%></td>
           <td><%=subject.abbreviation%></td>

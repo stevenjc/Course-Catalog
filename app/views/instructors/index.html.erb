@@ -1,14 +1,14 @@
 
 <h1>Listing Instructors</h1>
 
-<table class="table table-responsive" style="border-spacing: 15px;">
+<table class="table table-bordered">
     <tr>
       <th>Name</th>
       <th> Email </th>
       <th> Comment </th>
     </tr>
     <% @instructors.each do |instructor| %>
-      <tr  style="text-align: center">
+      <tr>
         <td><%=instructor.first + " " + instructor.last%></td>
         <td><%=instructor.email%></td>
         <td><%=instructor.comment%></td>
