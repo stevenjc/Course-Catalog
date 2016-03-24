@@ -1,26 +1,20 @@
 
+<%= button_to'New Search', search_courses_path, class: "btn btn-success", method: :get%>
 
-<div class="panel panel-info">
-  <div class="panel-heading">
-    <h3 class="panel-title">User Email</h3>
-  </div>
-  <div class="panel-body">
-    <%=current_user.email%>
-  </div>
-</div>
-
-<h4> Enrolled Courses </h4>
 <table class="table table-bordered">
     <tr>
       <th>Course Code</th>
       <th>Name</th>
       <th>Description</th>
     </tr>
-    <% @list_of_enrolled_courses.each do |course| %>
+    <% @courses.each do |course| %>
       <tr>
           <td><%=course.code%></td>
           <td><%=course.name%></td>
           <td><%=course.description%></td>
+          <td>
+              <%= button_to 'Enroll', enroll_courses_path(course.id), class: "btn btn-success", method: :get%>
+          </td>
       </tr>
     <% end %>
 </table>

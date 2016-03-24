@@ -12,6 +12,15 @@ Rails.application.routes.draw do
       only: [:create, :edit, :update]
   end
 
+  resources :courses do
+      collection do
+          get "/search" => "search#index", as:"search"
+          get "/search_results" => "search#show_results", as:"search_results"
+        #  get "/enroll" => "search#enroll", as: "enroll"
+          get '/enroll/:course' => 'search#enroll', as: :enroll
+      end
+  end
+
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
   get "/sign_up" => "clearance/users#new", as: "sign_up"
@@ -21,7 +30,6 @@ Rails.application.routes.draw do
   get "/instructors" => "instructors#index"
   get "/subjects" => "subjects#index"
   get "/courses" => "courses#index"
-  get "/search" => "search#index"
   get "/account" => "account#index"
 
   # The priority is based upon order of creation: first created -> highest priority.

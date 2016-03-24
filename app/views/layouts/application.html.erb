@@ -15,14 +15,44 @@
     </head>
     <body>
         <div id="main-container" class="container-fluid">
-            <div id="header">
-                <% if signed_in? -%>
-                <%= button_to t(".sign_out"), sign_out_path, method: :delete %>
-                <% else -%>
-                <%= link_to t(".sign_in"), sign_in_path %>
-                <% end -%>
-            </div>
 
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+
+
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <% if signed_in? %>
+                <li>
+                    <%= link_to "Homepage", "/", method: :get%>
+                </li>
+                <li>
+                    <%= link_to "Instructor List", "/instructors", method: :get%>
+                </li>
+                <li>
+                    <%= link_to "Course List", "/courses", method: :get%>
+                </li>
+                <li>
+                    <%= link_to "Course Search", "/courses/search", method: :get%>
+                </li>
+                <li>
+                    <%= link_to "Subject List", "/subjects", method: :get%>
+                </li>
+            <%end%>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <% if signed_in? -%>
+                    <%= button_to t(".sign_out"), sign_out_path,class: "btn btn-danger navbar-btn", method: :delete %>
+                <% else -%>
+                    <%= link_to t(".sign_in"), sign_in_path %>
+                <% end -%>
+            </li>
+        </ul>
+    </div>
+</nav>
             <%= yield %>
         </div>
 
