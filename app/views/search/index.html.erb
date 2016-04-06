@@ -4,13 +4,13 @@
 
   <div class="form-group">
     <label>Course Name</label>
-    <%= text_field_tag(:name, value ="") %>
+    <%= text_field_tag(:name, value ="",class: "form-control",  onkeyup:"submitFromAjax();") %>
   </div>
 
   <div class="form-group">
     <label>Subject</label>
 
-    <%= select(:subject_id, "subject_id", Subject.all.collect {|subject| [ subject.name, subject.subject_id ] }, {include_blank: 'Any', onchange: "$('#form').submit();"}) %> 
+    <%= select(:subject_id, "subject_id", Subject.all.collect {|subject| [ subject.name, subject.subject_id ] }, {include_blank: 'Any'}, class: "form-control", onchange:"submitFromAjax();") %>
 
   </div>
 

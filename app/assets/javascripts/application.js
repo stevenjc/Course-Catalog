@@ -15,3 +15,12 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+
+function submitFromAjax(){
+   $.ajax({
+         url : "search_results",
+         data : $("form").serialize()
+    });
+}
