@@ -1,14 +1,24 @@
 <h1>Search for Courses</h1>
 
-<%= form_tag(search_results_courses_path, method: "get", class: "form") do %>
+<%= form_tag(search_results_courses_path, method: "get", class: "form", remote: true) do %>
+
   <div class="form-group">
     <label>Course Name</label>
     <%= text_field_tag(:name, value ="") %>
   </div>
+
   <div class="form-group">
     <label>Subject</label>
-    <%= text_field_tag(:subject, value = "") %>
+
+    <%= select(:subject_id, "subject_id", Subject.all.collect {|subject| [ subject.name, subject.subject_id ] }, {include_blank: 'Any', onchange: "$('#form').submit();"}) %> 
+
   </div>
+
+
 
   <%= submit_tag("Search", class: "btn btn-success") %>
 <% end %>
+<br/>
+<div id="results">
+
+</div>
